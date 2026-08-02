@@ -1,73 +1,58 @@
-#📝 To-Do List App
+# 📝 To-Do List App
 
-A responsive To-Do List Web Application built using HTML, CSS, and JavaScript. This project helps users create, manage, edit, search, and track daily tasks. It is designed to improve frontend development skills by implementing DOM manipulation, event handling, local storage, and responsive UI design.
+![HTML](https://img.shields.io/badge/HTML-5-orange) ![CSS](https://img.shields.io/badge/CSS-3-blue) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
 
-🚀 Features:
+A responsive and user-friendly To-Do List web application built with HTML, CSS, and JavaScript. This project allows users to create, manage, edit, search, and track tasks efficiently while providing a clean and modern interface. It demonstrates DOM manipulation, event handling, responsive design, and browser-based data persistence for an enhanced learning experience.
 
+---
 
-➕ Add new tasks
+## ✨ Key Features
 
-✏️ Edit existing tasks
+- **📌 Add Tasks** – Create new tasks quickly with the input field and Add button.
+- **✏️ Edit Tasks** – Modify existing tasks with inline editing functionality.
+- **🗑️ Delete Tasks** – Remove unwanted tasks with a single click.
+- **✅ Task Completion** – Mark tasks as completed or pending.
+- **🔍 Search Tasks** – Filter tasks instantly using the search bar.
+- **📊 Task Filtering** – View tasks by status (All, Pending, Completed).
+- **📅 Current Date Display** – View the current date in the app header.
+- **💾 Data Persistence** – Preserve tasks across page refreshes using browser storage.
+- **📱 Responsive Design** – Seamless experience on mobile, tablet, and desktop devices.
 
-🗑️ Delete tasks
+---
 
-✅ Mark tasks as completed
+## 🛠️ Technologies Used
 
-⏳ View pending tasks
+- **HTML** – Semantic structure with forms, tables, and input elements.
+- **CSS** – Responsive layout with Flexbox, gradients, shadows, and media queries.
+- **JavaScript** – DOM manipulation, event handling, filtering, and local storage integration.
 
-📋 View all tasks
+---
 
-🔍 Search tasks instantly
+## 📂 Project Structure
 
-📅 Display current date
+- `index.html` – Main page structure
+- `style.css` – Styling and responsive layout
+- `script.js` – Task logic and UI interactions
 
-📱 Responsive design for Mobile, Tablet, and Desktop
+---
 
-🛠️ Technologies Used :
+## ▶️ How to Use
 
-1.HTML:
-Search Box,
-Input Field,
-Add Button,
-Filter Buttons,
-Task Table,
-Status Message,
-Concepts Learned,
-Semantic HTML,
-Forms,
-Tables,
-Input Elements,
-Buttons.
+1. Open the project in your browser.
+2. Enter a task in the input field.
+3. Click **Add** to create a task.
+4. Use **Edit**, **Delete**, and **Complete** options to manage tasks.
+5. Use the search bar and filter buttons to view tasks easily.
+6. Click **Reset** to clear all tasks.
 
-2.CSS:
-Gradient Background,
-Box Shadow,
-Rounded Corners,
-Hover Effects,
-Button Styling,
-Responsive Layout,
-Mobile-Friendly Design,
-Concepts Learned,
-Flexbox,
-Margin & Padding,
-Border Radius,
-Box Shadow,
-Colors & Gradients,
-Media Queries,
-Responsive Design.
+---
 
-3.JavaScript:
-Functions,
-Add Task,
-Edit Task,
-Delete Task,
-Complete Task,
-Search Task,
-Filter Tasks,
-Display Task Count,
-Load Saved Tasks Automatically,
-DOM Manipulation,
-Event Listeners,
-Conditional Statements.
-Loops
-Template Literals
+## 🎯 Purpose
+
+Designed to strengthen frontend development skills by demonstrating DOM manipulation, event handling, responsive design, and browser-based data persistence.
+
+---
+
+## 👨‍💻 Author
+
+Developed as a learning and practice project for web development.
