@@ -5,6 +5,9 @@ const searchBox = document.getElementById("searchBox");
 const filterButtons = document.querySelectorAll(".filter button");
 const emptyState = document.getElementById("emptyState");
 const datePicker = document.getElementById("datePicker");
+const resetButton = document.getElementById("resetButton");
+
+const STORAGE_KEY = "todoTasks";
 
 let taskCount = 0;
 let tasks = [];
@@ -111,14 +114,19 @@ function saveEdit(input, row, editButton) {
   filterTasks();
 }
 
-function addTask() {
-  const taskText = taskInput.value.trim();
-
-  if (!taskText) {
-    alert("Please enter a task.");
-    return;
+function saveTasks() {
+  try {
+    const taskData = tasks.map((task) => ({
+      text: task.text,
+      completed: task.completed,
+    }));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(taskData));
+  } catch (error) {
+    console.error("Unable to save tasks:", error);
   }
+}
 
+function createTaskRow(taskText, completed = false) {
   taskCount += 1;
 
   const row = document.createElement("tr");
@@ -129,12 +137,14 @@ function addTask() {
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.className = "task-check";
+  checkbox.checked = completed;
   checkCell.appendChild(checkbox);
 
   const taskCell = document.createElement("td");
   const taskTextSpan = document.createElement("span");
   taskTextSpan.className = "task-text";
   taskTextSpan.textContent = taskText;
+  taskTextSpan.classList.toggle("completed-text", completed);
   taskCell.appendChild(taskTextSpan);
 
   const editCell = document.createElement("td");
@@ -153,6 +163,7 @@ function addTask() {
   actionCell.appendChild(deleteButton);
 
   row.dataset.taskText = taskText;
+  row.classList.toggle("completed", completed);
   row.append(serialCell, checkCell, taskCell, editCell, actionCell);
 
   checkbox.addEventListener("change", () => {
@@ -168,6 +179,7 @@ function addTask() {
       task.completed = isCompleted;
     }
 
+    saveTasks();
     filterTasks();
   });
 
@@ -187,16 +199,63 @@ function addTask() {
     row.remove();
     updateSerialNumbers();
     updateEmptyState();
+    saveTasks();
   });
 
-  tasks.push({ row, text: taskText, completed: false });
+  tasks.push({ row, text: taskText, completed });
   taskTable.appendChild(row);
   filterTasks();
+
+  return tasks[tasks.length - 1];
+}
+
+function addTask() {
+  const taskText = taskInput.value.trim();
+
+  if (!taskText) {
+    alert("Please enter a task.");
+    return;
+  }
+
+  createTaskRow(taskText);
+  saveTasks();
   taskInput.value = "";
   taskInput.focus();
 }
 
+function loadTasks() {
+  try {
+    const savedTasks = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+
+    if (!Array.isArray(savedTasks)) {
+      return;
+    }
+
+    tasks = [];
+    taskTable.innerHTML = "";
+    taskCount = 0;
+
+    savedTasks.forEach((taskData) => {
+      createTaskRow(taskData.text, taskData.completed || false);
+    });
+
+    updateSerialNumbers();
+    filterTasks();
+    updateEmptyState();
+  } catch (error) {
+    console.error("Unable to load tasks:", error);
+  }
+}
+
 addButton.addEventListener("click", addTask);
+
+resetButton.addEventListener("click", () => {
+  tasks = [];
+  taskTable.innerHTML = "";
+  taskCount = 0;
+  updateEmptyState();
+  saveTasks();
+});
 
 taskInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
@@ -225,5 +284,6 @@ function updateDateDisplay() {
 setFilter("all");
 updateEmptyState();
 updateDateDisplay();
+loadTasks();
 
 datePicker.addEventListener("change", updateDateDisplay);
