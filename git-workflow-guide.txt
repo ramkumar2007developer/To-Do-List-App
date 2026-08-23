@@ -1,0 +1,101 @@
+Git Workflow Guide for To-Do List Project
+======================================
+
+GENERAL WORKFLOW FOR ANY FILE CHANGES
+=====================================
+
+1. Check current status
+   git status
+
+2. Review changes
+   git diff
+
+3. Add files to commit
+   git add index.html script.js style.css
+   or
+   git add README.md index.html script.js style.css
+
+4. Commit changes
+   git commit -m "Describe your change"
+
+Example:
+   git commit -m "Add task persistence on refresh"
+
+5. Push to GitHub
+   git push origin main
+
+If Git says the remote has newer changes:
+   git pull --rebase origin main
+   git push origin main
+
+
+SPECIFIC WORKFLOW FOR README FILE CHANGES
+==========================================
+
+Step 1: Edit the README.md file with your changes
+
+Step 2: Check the status
+   git status
+
+Step 3: Add README file to commit
+   git add README.md
+
+Step 4: Commit with a descriptive message
+   git commit -m "Update README with [description of changes]"
+
+Example:
+   git commit -m "Update README with professional formatting and badges"
+   git commit -m "Add installation instructions to README"
+   git commit -m "Update README with new features"
+
+Step 5: Push to GitHub
+   git push origin main
+
+Complete Example:
+   git status
+   git add README.md
+   git commit -m "Update README with professional formatting and badges"
+   git push origin main
+
+
+HANDLE REMOTE CONFLICTS
+=======================
+
+If you get an error about remote having work you don't have:
+   git pull --rebase origin main
+   git push origin main
+
+
+CLEANUP FOR DUPLICATE FILES
+============================
+
+If you accidentally created a duplicate folder:
+   Remove-Item -Recurse -Force ./foldername
+   git add -A
+   git commit -m "Remove duplicate folder"
+   git push origin main
+
+
+USEFUL COMMANDS
+===============
+
+- git status              : Check which files changed
+- git diff               : View detailed changes
+- git add .              : Add all changed files
+- git add [filename]     : Add specific file
+- git commit -m "msg"    : Create a commit
+- git push origin main   : Push to GitHub
+- git pull --rebase      : Sync with remote before push
+- git log --oneline      : View recent commits
+
+
+BEST PRACTICES
+==============
+
+- Only commit the files you really changed
+- Avoid adding duplicate folders or copied files
+- Use clear, descriptive commit messages
+- Always check git status before committing
+- Pull before pushing to avoid conflicts
+- Commit related changes together
+- Write messages in present tense (e.g., "Add feature" not "Added feature")
